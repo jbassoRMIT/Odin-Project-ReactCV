@@ -1,27 +1,18 @@
 //get user to input personal details
 import { useState } from "react"
 
-export default function PersonalDetails(){
-    const [inputs,setInputs]=useState({
-        name:"",
-        phone:"",
-        email:""
-    })
+export default function PersonalDetails({name,phone,email,changeFunction}){
 
-    const handleChange=function(e){
-        const name = e.target.name;
-        const value = e.target.value;
-        setInputs(values => ({...values, [name]: value}))
-    }
+    
     
     return(
         <div>
             <label htmlFor="name">Name: </label>
-            <input id="name" name="name" type="text" value={inputs.name} onChange={handleChange}/><br/>
+            <input id="name" name="name" type="text" value={name} onChange={changeFunction}/><br/>
             <label htmlFor="phone">Phone: </label>
-            <input id="phone" name="phone" type="text" value={inputs.phone} onChange={handleChange}/><br/>
+            <input id="phone" name="phone" type="text" value={phone} onChange={changeFunction}/><br/>
             <label htmlFor="email">Email: </label>
-            <input id="email" name="email" type="email" value={inputs.email} onChange={handleChange}/><br/>
+            <input id="email" name="email" type="email" value={email} onChange={changeFunction}/><br/>
         </div>
     )
 }
