@@ -1,18 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Form from './Form'
-import Education from './Education'
+
+import CVDisplay from './CVDisplay'
 
 function App() {
+  const [submitted,setSubmitted]=useState(false);
+  const [className,setClassName]=useState("content")
+  
   const [inputs,setInputs]=useState({
     name:"",
     phone:"",
     email:"",
     schoolName:"",
     degree:"",
-    yearCompleted:""
+    yearCompleted:"",
+    companyName:"",
+    position:"",
+    responsibilities:"",
+    dateStart:"",
+    dateFinish:""
 })
 
 const handleChange=function(e){
@@ -25,21 +32,61 @@ const handleSubmit=function(e){
     e.preventDefault();
     console.log("form submitted");
     console.log(inputs);
+    setSubmitted(true);
+    setClassName("content submitted")
+}
+
+const submittedSection=function(){
+  if(submitted){
+    return(
+      <div className='CVDisplay' >
+        <CVDisplay 
+          name={inputs.name} 
+          phone={inputs.phone} 
+          email={inputs.email} 
+          schoolName={inputs.schoolName}
+          degree={inputs.degree}
+          yearCompleted={inputs.yearCompleted}
+          companyName={inputs.companyName}
+          position={inputs.position}
+          responsibilities={inputs.responsibilities}
+          dateStart={inputs.dateStart}
+          dateFinish={inputs.dateFinish}
+        />
+      </div>
+    )
+  }
+  else{
+    return null;
+  }
 }
 
   return (
     <>
-      <h1>Build a CV</h1>
-      <Form 
-        personalName={inputs.name} 
-        personalPhone={inputs.phone} 
-        personalEmail={inputs.email} 
-        schoolName={inputs.schoolName}
-        degreeName={inputs.degree}
-        yearCompleted={inputs.yearCompleted}
-        changeFunction={handleChange} 
-        submitFunction={handleSubmit}
-      />
+      <div className={className}>
+        <div className='enterDetails'>
+          <h1>Build a CV</h1>
+          <Form
+            personalName={inputs.name}
+            personalPhone={inputs.phone}
+            personalEmail={inputs.email}
+            schoolName={inputs.schoolName}
+            degreeName={inputs.degree}
+            yearCompleted={inputs.yearCompleted}
+            companyName={inputs.companyName}
+            position={inputs.position}
+            responsibilities={inputs.responsibilities}
+            dateStart={inputs.dateStart}
+            dateFinish={inputs.dateFinish}
+            changeFunction={handleChange}
+            submitFunction={handleSubmit}
+          />
+        </div>
+        {submittedSection()}
+      </div>
+        
+
+      
     </>
   )
 }

@@ -6,7 +6,7 @@ export default function PersonalDetails({name,phone,email,changeFunction}){
     
     
     return(
-        <div>
+        <div className="formSection">
             <section>
                 <h3>Personal Details</h3>
                 <label htmlFor="name">Name: </label>
