@@ -1,9 +1,9 @@
 //get user to input educational experience
 import { useState } from "react"
 
-export default function WorkExperience({companyName,position,responsibilities,dateStart,dateFinish,changeFunction}){
+export default function WorkExperience({index,companyName,position,responsibilities,dateStart,dateFinish,changeFunction}){
     return(
-        <div className="formSection">
+        <div id={`work ${index}`} className="formSection">
             <section>
                 <h3>Work Experience</h3>
                 <label htmlFor="companyName">Name of company: </label>
