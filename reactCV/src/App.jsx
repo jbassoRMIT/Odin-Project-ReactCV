@@ -3,6 +3,8 @@ import './App.css'
 import Form from './Form'
 
 import CVDisplay from './CVDisplay'
+import TestForm from './TestFormPersonal';
+import TestCV from './TestCV';
 
 function App() {
   const [submitted,setSubmitted]=useState(false);
@@ -63,7 +65,7 @@ const submittedSection=function(){
 
   return (
     <>
-      <div className={className}>
+      {/* <div className={className}>
         <div className='enterDetails'>
           <h1>Build a CV</h1>
           <Form
@@ -83,7 +85,8 @@ const submittedSection=function(){
           />
         </div>
         {submittedSection()}
-      </div>
+      </div> */}
+      <TestCV/>
         
 
       
